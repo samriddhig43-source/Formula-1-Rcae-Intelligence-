@@ -13,7 +13,7 @@ A responsive, beginner-friendly college project inspired by motorsport analytics
 ## Important note
 This project uses **illustrative sample data** for demonstration and learning. It is not connected to live Formula 1 data and should not be presented as official race results.
 
-## How to run on a Mac
+## How to run Locally
 1. Download and unzip `f1_race_intelligence_dashboard.zip`.
 2. Open the extracted folder in VS Code.
 3. Open `index.html` in a browser.
