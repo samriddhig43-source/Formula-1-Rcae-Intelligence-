@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Race Intelligence | Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="F1 Race Intelligence home">
+        <span class="brand-mark">F1</span>
+        <span><strong>RACE</strong><small>INTELLIGENCE</small></span>
+      </a>
+      <div class="season-label">SEASON <b>2025</b></div>
+      <nav>
+        <a class="nav-item active" href="#overview"><span>▦</span> Overview</a>
+        <a class="nav-item" href="#drivers"><span>♙</span> Driver standings</a>
+        <a class="nav-item" href="#performance"><span>⌁</span> Performance</a>
+        <a class="nav-item" href="#circuits"><span>◎</span> Circuits</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="status-dot"></div>
+        <div><strong>Dashboard ready</strong><small>Sample dataset loaded</small></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Toggle navigation">☰</button>
+        <div class="breadcrumb">RACE INTELLIGENCE <span>/</span> <b>OVERVIEW</b></div>
+        <div class="topbar-right"><span class="live-dot"></span> DEMO MODE <span class="avatar">RI</span></div>
+      </header>
+
+      <section class="hero" id="overview">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> MOTORSPORT ANALYTICS PLATFORM</p>
+          <h1>THE DATA BEHIND<br /><em>THE RACE.</em></h1>
+          <p class="hero-text">Explore driver performance, team pace and race trends through one intelligence dashboard.</p>
+          <a class="primary-button" href="#performance">EXPLORE ANALYTICS <span>↗</span></a>
+        </div>
+        <div class="hero-art" aria-label="Stylized racing circuit graphic">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="track"><span class="track-pin">●</span></div>
+          <div class="hero-number">01<small>RACE<br/>ANALYTICS</small></div>
+          <div class="hero-caption">PRECISION. PACE. PERFORMANCE.</div>
+        </div>
+      </section>
+
+      <section class="section-heading">
+        <div><p class="eyebrow">SEASON SNAPSHOT</p><h2>Performance at a glance<span>.</span></h2></div>
+        <label class="filter-label">RACE FILTER
+          <select id="raceFilter">
+            <option value="all">All races</option>
+            <option value="Monaco">Monaco GP</option>
+            <option value="Silverstone">British GP</option>
+            <option value="Monza">Italian GP</option>
+            <option value="Suzuka">Japanese GP</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="stats-grid" aria-label="Key statistics">
+        <article class="stat-card"><div class="stat-top"><span>DRIVERS TRACKED</span><span class="stat-icon">♙</span></div><strong id="driverCount">6</strong><small><b>+2</b> compared with last demo</small><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="stat-card"><div class="stat-top"><span>RACES ANALYSED</span><span class="stat-icon">◉</span></div><strong id="raceCount">4</strong><small><b>4 circuits</b> in sample dataset</small><div class="stat-line"></div></article>
+        <article class="stat-card"><div class="stat-top"><span>FASTEST LAP</span><span class="stat-icon">⌁</span></div><strong id="fastestLap">1:12.8</strong><small id="fastestDriver">L. Norris · demo data</small><div class="stat-line red"></div></article>
+        <article class="stat-card"><div class="stat-top"><span>TOP TEAM</span><span class="stat-icon">✦</span></div><strong id="topTeam">McLaren</strong><small id="topTeamPoints">126 total sample points</small><div class="team-pill">TEAM PERFORMANCE</div></article>
+      </section>
+
+      <section class="analytics-grid" id="performance">
+        <article class="panel chart-panel">
+          <div class="panel-heading"><div><p class="eyebrow">RACE PACE</p><h3>Lap time comparison</h3></div><span class="panel-tag">SECONDS</span></div>
+          <p class="panel-subtitle">Average lap time by driver in the selected sample.</p>
+          <div class="chart-wrap"><canvas id="lapChart" height="250" aria-label="Bar chart of average lap times"></canvas></div>
+          <div class="chart-legend"><span><i class="legend-red"></i> Average lap time</span><span class="muted">Lower is faster</span></div>
+        </article>
+        <article class="panel chart-panel">
+          <div class="panel-heading"><div><p class="eyebrow">POINTS RACE</p><h3>Driver standings</h3></div><span class="panel-tag">PTS</span></div>
+          <p class="panel-subtitle">Points earned across the demo races.</p>
+          <div class="chart-wrap"><canvas id="pointsChart" height="250" aria-label="Bar chart of driver points"></canvas></div>
+          <div class="chart-legend"><span><i class="legend-white"></i> Total points</span><span class="muted">Illustrative data</span></div>
+        </article>
+      </section>
+
+      <section class="bottom-grid" id="drivers">
+        <article class="panel table-panel">
+          <div class="panel-heading"><div><p class="eyebrow">GRID OVERVIEW</p><h3>Driver leaderboard</h3></div><span class="panel-tag">2025 · DEMO</span></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>POS</th><th>DRIVER</th><th>TEAM</th><th>AVG LAP</th><th>POINTS</th></tr></thead>
+              <tbody id="leaderboard"></tbody>
+            </table>
+          </div>
+          <p class="table-note">* This is a student demo with illustrative sample data, not official live F1 results.</p>
+        </article>
+        <article class="panel circuit-panel" id="circuits">
+          <div class="panel-heading"><div><p class="eyebrow">CIRCUIT INTEL</p><h3>Race locations</h3></div><span class="panel-tag">4 TRACKS</span></div>
+          <div class="circuit-list">
+            <button class="circuit-row selected" data-race="all"><span class="circuit-icon">◎</span><span><strong>All circuits</strong><small>Season overview</small></span><b>↗</b></button>
+            <button class="circuit-row" data-race="Monaco"><span class="circuit-icon">⌁</span><span><strong>Monaco Grand Prix</strong><small>Monte Carlo · Street circuit</small></span><b>↗</b></button>
+            <button class="circuit-row" data-race="Silverstone"><span class="circuit-icon">⌁</span><span><strong>British Grand Prix</strong><small>Silverstone · High speed</small></span><b>↗</b></button>
+            <button class="circuit-row" data-race="Monza"><span class="circuit-icon">⌁</span><span><strong>Italian Grand Prix</strong><small>Monza · High speed</small></span><b>↗</b></button>
+            <button class="circuit-row" data-race="Suzuka"><span class="circuit-icon">⌁</span><span><strong>Japanese Grand Prix</strong><small>Suzuka · Technical</small></span><b>↗</b></button>
+          </div>
+        </article>
+      </section>
+
+
+      <section class="tableau-section" id="tableau-story">
+        <div class="section-heading tableau-heading">
+          <div><p class="eyebrow">PUBLISHED TABLEAU STORY</p><h2>Explore the full race story<span>.</span></h2></div>
+          <a class="primary-button" href="https://public.tableau.com/app/profile/samriddhi.gupta6116/viz/Formula1RaceIntelligenceDashboard_17931100769340/Story1" target="_blank" rel="noopener">OPEN IN TABLEAU <span>↗</span></a>
+        </div>
+        <div class="tableau-frame">
+          <iframe title="Formula 1 Race Intelligence Dashboard — Tableau Story" src="https://public.tableau.com/views/Formula1RaceIntelligenceDashboard_17931100769340/Story1?:showVizHome=no&:embed=true" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="tableau-note">If the story does not appear here, use “Open in Tableau” to view it in a new tab. The Tableau workbook must be published and its sharing settings must allow public viewing.</p>
+      </section>
+
+      <footer><span class="footer-logo">F1 <b>RACE INTELLIGENCE</b></span><span>STUDENT PROJECT · BUILT FOR LEARNING</span><span>© 2025 DEMO DASHBOARD</span></footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
